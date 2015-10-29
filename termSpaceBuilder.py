@@ -7,10 +7,7 @@ from collections import defaultdict
 from nltk.stem.snowball import RussianStemmer
 from nltk.stem.snowball import GermanStemmer
 from porter import PorterStemmer
-import codecs
-import re
-import json
-import cProfile
+import codecs, re, json
 import pymorphy2
 
 
@@ -118,8 +115,6 @@ class NormalizerDE(object):
 		for umlaut, ersatz in umlauts.iteritems():
 			if umlaut in word:
 				word = word.replace(umlaut, ersatz)
-			else:
-				word = word
 				
 		return word
 
@@ -190,8 +185,6 @@ class NormalizerRU(object):
 
 		if 'ё' in word:
 			word = word.replace('ё', 'е')
-		else:
-			word = word
 				
 		return word
 
@@ -431,4 +424,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-	# cProfile.run('main()')
